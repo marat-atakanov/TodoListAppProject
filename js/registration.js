@@ -9,7 +9,7 @@ const userId = JSON.parse(localStorage.getItem("user"))?.id
 
 window.onload = () => {
     if (userId) {
-        window.location.replace("/TodoProject/pages/todoListPage.html")
+        window.location.replace("../pages/todoListPage.html")
     }
 }
 

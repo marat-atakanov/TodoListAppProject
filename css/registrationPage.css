@@ -1,7 +1,7 @@
 
 .main {
     height: calc(100vh - 81px);
-    min-height: 670px;
+    min-height: 690px;
     padding-top: 20px;
 
 }
@@ -47,7 +47,7 @@
 .regForm label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .regForm label input {

@@ -297,7 +297,7 @@ editModalCloseBtn.onclick = () => {
 
 logoutBtn.onclick = () => {
     localStorage.removeItem("user");
-    window.location.replace("/TodoProject/index.html")
+    window.location.replace("../index.html")
 }
 
 
