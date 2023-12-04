@@ -12,16 +12,20 @@ const wrapper = document.querySelector(".wrapper")
 const headerUsername = document.querySelector(".headerUsername")
 
 
+const allBtn = document.querySelector(".all")
+const completedBtn = document.querySelector(".completed")
+const uncompletedBtn = document.querySelector(".uncompleted")
+const allFilterButtons = document.querySelectorAll(".filterButton")
+
 
 const userId = JSON.parse(localStorage.getItem("user"))?.id
-
 
 
 window.onload = () => {
     if (userId) {
         headerUsername.innerHTML = JSON.parse(localStorage.getItem("user"))?.username
     }
-    setTimeout(()=> {
+    setTimeout(() => {
         if (!userId) {
             window.location.replace("../pages/loginPage.html")
         }
@@ -47,6 +51,61 @@ const fetchData = async () => {
     }
 }
 
+const getFilteredTasks = async (completed) => {
+    try {
+        const response = await fetch(`https://656b57f0dac3630cf728038c.mockapi.io/todo/users/${userId}/todotasks?completed=${completed}`)
+        return await response.json()
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const popNoTasksMessage = () => {
+    const noTasks = document.createElement("p")
+    noTasks.setAttribute("class", "noTasksMessage")
+    noTasks.innerHTML = "No tasks..."
+    tasksBlock.append(noTasks)
+}
+
+const changeActiveBtn = (index) => {
+    allFilterButtons.forEach(btn => {
+        btn.style.backgroundColor = "#2f2f2f"
+        btn.style.color = "#ffffff"
+    })
+    allFilterButtons[index].style.backgroundColor = "#FF8A56"
+    allFilterButtons[index].style.color = "#000000"
+}
+
+completedBtn.onclick = async () => {
+    const tasks = await getFilteredTasks(true)
+    tasksBlock.innerHTML = null
+    await tasks.forEach(task => createElements(task))
+    changeActiveBtn(1)
+    if (tasksBlock.children.length === 0) {
+        popNoTasksMessage()
+    }
+}
+
+allBtn.onclick = async () => {
+    const tasks = await getFilteredTasks("")
+    tasksBlock.innerHTML = null
+    await tasks.forEach(task => createElements(task))
+    changeActiveBtn(0)
+    if (tasksBlock.children.length === 0) {
+        popNoTasksMessage()
+    }
+}
+
+uncompletedBtn.onclick = async () => {
+    const tasks = await getFilteredTasks(false)
+    tasksBlock.innerHTML = null
+    await tasks.forEach(task => createElements(task))
+    changeActiveBtn(2)
+    if (tasksBlock.children.length === 0) {
+        popNoTasksMessage()
+    }
+}
 
 const deleteTask = async (id) => {
     try {
@@ -190,17 +249,16 @@ const createElements = (task) => {
         await deleteTask(task.id)
         await div.remove()
         if (tasksBlock.children.length === 0) {
-            const noTasks = document.createElement("p")
-            noTasks.setAttribute("class", "noTasksMessage")
-            noTasks.innerHTML = "No tasks..."
-            tasksBlock.append(noTasks)
+            popNoTasksMessage()
         }
     }
+
     taskTitleDesc.append(title, desc)
     taskTitleDescCheckbox.append(checkbox, taskTitleDesc)
     taskButtons.append(editBtn, deleteBtn)
     div.append(taskTitleDescCheckbox, taskBlockLine, taskButtons)
     tasksBlock.insertBefore(div, tasksBlock.firstChild)
+
 
 }
 
@@ -226,10 +284,7 @@ const createTasks = async () => {
         error.innerHTML = "Error..."
         tasksBlock.append(error)
     } else if (!tasks) {
-        const noTasks = document.createElement("p")
-        noTasks.setAttribute("class", "noTasksMessage")
-        noTasks.innerHTML = "No tasks..."
-        tasksBlock.append(noTasks)
+        popNoTasksMessage()
     }
 }
 
@@ -246,5 +301,5 @@ logoutBtn.onclick = () => {
 }
 
 
-
 createTasks().then()
+

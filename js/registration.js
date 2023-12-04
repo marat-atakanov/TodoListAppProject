@@ -3,6 +3,7 @@ const regEmailInput = document.querySelector(".regEmailInput")
 const regUsernameInput = document.querySelector(".regUsernameInput")
 const regPasswordInput = document.querySelector(".regPasswordInput")
 const regConfirmPasswordInput = document.querySelector(".regConfirmPasswordInput")
+const errorMessage = document.querySelector(".errorMessage")
 
 const userId = JSON.parse(localStorage.getItem("user"))?.id
 
@@ -40,6 +41,14 @@ regForm.onsubmit = (e) => {
     if (regPasswordInput.value === regConfirmPasswordInput.value) {
         registerUser(regEmailInput.value, regUsernameInput.value, regPasswordInput.value).then()
     } else {
-        console.log("Passwords must match!")
+        errorMessage.innerHTML = "Passwords must match!"
     }
+}
+
+regPasswordInput.oninput = () => {
+    errorMessage.innerHTML = ""
+}
+
+regConfirmPasswordInput.oninput = () => {
+    errorMessage.innerHTML = ""
 }

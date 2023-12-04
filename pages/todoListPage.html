@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo App</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/core.css">
     <link rel="stylesheet" href="../css/todoListPage.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
     <!--    <script type="text/javascript">-->
 <!--        function preventBack() {-->
 <!--            window.history.forward();-->
@@ -52,6 +57,11 @@
                         </label>
                         <button type="submit" class="todoPostBtn">POST</button>
                     </div>
+                    <div class="filterButtons">
+                        <button type="button" class="all filterButton active">all</button>
+                        <button type="button" class="completed filterButton">completed</button>
+                        <button type="button" class="uncompleted filterButton">uncompleted</button>
+                    </div>
                 </form>
                 <div class="bottomBlock">
 <!--                    <div class="taskBlock">-->
@@ -72,6 +82,7 @@
             </div>
         </div>
     </div>
+
 
     <footer>
         <div class="container">

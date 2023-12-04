@@ -20,3 +20,21 @@ ul {
     width: 1215px;
     margin: 0 auto;
 }
+
+@media only screen and (max-width: 1299px) {
+    .container {
+        width: 900px;
+    }
+}
+
+@media only screen and (max-width: 944px) {
+    .container {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        width: 320px;
+    }
+}
