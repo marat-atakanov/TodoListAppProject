@@ -16,9 +16,9 @@ window.onload = () => {
 
 getStartedBtn.onclick = () => {
     if (userId) {
-        window.location.replace("pages/todoListPage.html")
+        window.location.href = "pages/todoListPage.html"
     } else {
-        window.location.replace("pages/loginPage.html")
+        window.location.href = "pages/loginPage.html"
     }
 }
 
