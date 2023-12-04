@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/core.css">
+    <link rel="stylesheet" href="../css/todoListPage.css">
+    <!--    <script type="text/javascript">-->
+<!--        function preventBack() {-->
+<!--            window.history.forward();-->
+<!--        }-->
+
+<!--        setTimeout("preventBack()", 0);-->
+
+<!--        window.onunload = function () { null };-->
+<!--    </script>-->
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="container">
+            <div class="header_inner">
+                <a class="logo" href="../index.html">TodoApp<span>.</span></a>
+                <nav>
+                    <ul>
+                        <li><span class="headerUsername"></span></li>
+                        <li>
+                            <div class="headerLine"></div>
+                        </li>
+                        <li><a class="headerLink logoutBtn" href="../index.html">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="container">
+            <div class="todoListBlock">
+                <form class="topBlockForm">
+                    <h2>What to you need to do<span>...?</span></h2>
+                    <div class="topBlockInputs">
+                        <label>
+                            <span>Title:</span>
+                            <input required class="todoTitleInput" placeholder="..." type="text">
+                        </label>
+                        <label>
+                            <span>Description:</span>
+                            <input required class="todoDescInput" placeholder="..." type="text">
+                        </label>
+                        <button type="submit" class="todoPostBtn">POST</button>
+                    </div>
+                </form>
+                <div class="bottomBlock">
+<!--                    <div class="taskBlock">-->
+<!--                        <div class="taskTitleDescCheckbox">-->
+<!--                            <input class="taskCheckbox" type="checkbox">-->
+<!--                            <div class="taskTitleDesc">-->
+<!--                                <h2 class="taskTitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, unde.</h2>-->
+<!--                                <p class="taskDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque consectetur doloribus est libero maiores necessitatibus nesciunt nulla quae soluta?</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="taskBlockLine"></div>-->
+<!--                        <div class="taskButtons">-->
+<!--                            <button class="taskEdit">Edit</button>-->
+<!--                            <button class="taskDelete">Delete</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer_inner">
+                <a class="logoFooter" href="../index.html">TodoApp<span>.</span></a>
+                <div class="footer_contacts">
+                    <h5>Contact me</h5>
+                    <ul>
+                        <li>
+                            <a href="https://www.google.com/intl/ru/gmail/about/">
+                                <img src="../images/gmailIcon.svg" alt="">
+                                marat.atakanov@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/what_was_my_username">
+                                <img src="../images/telegramIcon.svg" alt="">
+                                @what_was_my_username
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/">
+                                <img src="../images/instagramIcon.svg" alt="">
+                                @instagramnickname
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://web.whatsapp.com/">
+                                <img src="../images/whatsappIcon.svg" alt="">
+                                +996 123 456 789
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div class="editModalWindow hide">
+    <form class="editModalWindowForm">
+        <h3>Have your plans changed<span>...?</span></h3>
+        <div class="editModalWindowInputs">
+            <label>
+                <span>New title:</span>
+                <input required="required" placeholder="..." class="editModalTitleInput" type="text">
+            </label>
+            <label>
+                <span>New description:</span>
+                <input required="required" placeholder="..." class="editModalDescInput" type="text">
+            </label>
+            <button type="submit" class="editModalConfirmBtn">CONFIRM</button>
+        </div>
+        <button type="button" class="editModalCloseBtn">&times;</button>
+    </form>
+</div>
+
+</body>
+
+
+<script src="../js/todoList.js"></script>
+</html>

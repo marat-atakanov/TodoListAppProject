@@ -1,0 +1,231 @@
+header {
+    height: 81px;
+    padding: 40px 0 0;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.logo {
+    line-height: normal;
+    font-size: 28px;
+    color: black;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #FF8A56;
+}
+
+.header_inner nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.headerLink {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.headerLink:hover {
+    text-decoration: underline;
+}
+
+.headerLine {
+    height: 25px;
+    width: 1px;
+    border: 1px solid #a9a9a9;
+}
+
+.headerUsername {
+    font-weight: 700;
+    font-size: 20px;
+    color: #FF8A56;
+}
+
+/*Main =======================*/
+
+.main {
+    height: calc(100vh - 81px);
+    min-height: 670px;
+
+}
+
+.main_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_info {
+    margin-top: 117px;
+    width: 647px;
+}
+
+.main_info h1 {
+    color: #000;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 82.5px;
+    letter-spacing: 2px;
+}
+
+.main_info h1::first-line {
+    color: #FF8A56;
+}
+
+.main_info p {
+    margin-top: 27px;
+    width: 547px;
+    color: #666;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+}
+
+.main_info button {
+    margin-top: 38px;
+    padding: 20px 30px;
+    background-color: black;
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main_info button:hover {
+    background-color: #212121;
+}
+
+.main_info button:active {
+    background-color: #000000;
+    color: #666666;
+}
+
+/**/
+
+.main_todoBlock {
+    margin-top: 70px;
+}
+
+.main_todoBlock .todoBlock {
+    width: 450px;
+    height: 550px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main_todoBlock .todoBlock .topBlock {
+    height: 100px;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main_todoBlock .todoBlock .topBlock div{
+    border-radius: 3px;
+    background-color: #969696;
+    height: 25px;
+    width: 150px;
+}
+
+.main_todoBlock .todoBlock .bottomBlock {
+    height: 450px;
+    overflow: hidden;
+}
+
+.main_todoBlock .todoBlock .bottomBlock > div {
+    position: relative;
+    height: 100px;
+    border-bottom: 1px solid grey;
+    padding: 30px;
+    animation: animateTodo 10s infinite linear;
+}
+
+.main_todoBlock .todoBlock .bottomBlock > div:nth-of-type(odd) {
+    background-color: #fce0b9;
+    box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main_todoBlock .todoBlock .bottomBlock > div:nth-of-type(odd) div {
+    background-color: rgba(42, 42, 42, 0.07);
+}
+
+.main_todoBlock .todoBlock .bottomBlock > div div {
+    border-radius: 3px;
+    height: 100%;
+    background-color: #efefef;
+}
+
+@keyframes animateTodo {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -300px;
+    }
+    100% {
+        top: -600px;
+    }
+}
+
+
+/*Footer =====================*/
+
+footer {
+    padding-top: 40px;
+    background-color: black;
+    height: 300px;
+}
+
+.footer_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoFooter {
+    line-height: normal;
+    font-size: 32px;
+    color: white;
+    font-weight: 700;
+}
+
+.logoFooter span {
+    color: #FF8A56;
+}
+
+.footer_contacts h5 {
+    margin-bottom: 24px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.footer_contacts ul {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.footer_contacts ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #bbb;
+    font-size: 16px;
+}
+
+.hide {
+    display: none;
+}

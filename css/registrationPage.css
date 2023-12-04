@@ -1,0 +1,176 @@
+header {
+    height: 81px;
+    padding: 40px 0 0;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.logo {
+    line-height: normal;
+    font-size: 28px;
+    color: black;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #FF8A56;
+}
+
+.header_inner nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.headerLink {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.headerLink:hover {
+    text-decoration: underline;
+}
+
+.headerLine {
+    height: 25px;
+    width: 1px;
+    border: 1px solid #a9a9a9;
+}
+
+.navActive {
+    font-weight: 700;
+}
+
+
+.main {
+    height: calc(100vh - 81px);
+    min-height: 670px;
+    padding-top: 20px;
+
+}
+
+
+
+footer {
+    padding-top: 40px;
+    background-color: black;
+    height: 300px;
+}
+
+.footer_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoFooter {
+    line-height: normal;
+    font-size: 32px;
+    color: white;
+    font-weight: 700;
+}
+
+.logoFooter span {
+    color: #FF8A56;
+}
+
+.footer_contacts h5 {
+    margin-bottom: 24px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.footer_contacts ul {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.footer_contacts ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #bbb;
+    font-size: 16px;
+}
+
+/*Reg form =============================*/
+
+.regForm {
+    border-radius: 7px;
+    padding: 60px 40px;
+    margin: 0 auto;
+    width: 600px;
+    background-color: #1c1c1c;
+    /*border-right: 1px solid grey;*/
+    /*border-left: 1px solid grey;*/
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.regForm h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.regForm h2 span {
+    color: #FF8A56;
+}
+
+.regForm label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.regForm label input {
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background-color: #313131;
+    color: #ffffff;
+}
+
+.regForm label p {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ababab;
+}
+
+.regForm label p span {
+    color: #ff0000;
+}
+
+.regSubmitBtn {
+    background-color: #FF8A56;
+    color: #000000;
+    margin-top: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 13px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.regSubmitBtn:hover {
+    filter: brightness(1.2);
+}
+
+.regSubmitBtn:active {
+    filter: brightness(0.8);
+}
