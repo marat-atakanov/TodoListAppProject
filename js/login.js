@@ -5,12 +5,14 @@ const errorMessage = document.querySelector(".errorMessage")
 
 const userId = JSON.parse(localStorage.getItem("user"))?.id
 
+// Redirect to todolist page if logged in
 window.onload = () => {
     if (userId) {
         window.location.replace("../pages/todoListPage.html")
     }
 }
 
+// Fetch all users to find the right user by the login and password
 const fetchAllUsers = async () => {
     try {
         const response = await fetch("https://656b57f0dac3630cf728038c.mockapi.io/todo/users")
@@ -21,6 +23,8 @@ const fetchAllUsers = async () => {
         console.log(e)
     }
 }
+
+// Submitting the login form
 
 loginForm.onsubmit = async (e) => {
     e.preventDefault()
@@ -33,10 +37,12 @@ loginForm.onsubmit = async (e) => {
     }
 }
 
+// Remove the error message on type
 loginEmailInput.oninput = () => {
     errorMessage.innerHTML = ""
 }
 
+// Remove the error message on type
 loginPasswordInput.oninput = () => {
     errorMessage.innerHTML = ""
 }

@@ -7,11 +7,14 @@ const errorMessage = document.querySelector(".errorMessage")
 
 const userId = JSON.parse(localStorage.getItem("user"))?.id
 
+// Redirecting to todolist page if logged in
 window.onload = () => {
     if (userId) {
         window.location.replace("../pages/todoListPage.html")
     }
 }
+
+// Registering a user
 
 const registerUser = async (email, username, password) => {
     const options = {
@@ -36,6 +39,8 @@ const registerUser = async (email, username, password) => {
     }
 }
 
+// Submitting the register form
+
 regForm.onsubmit = (e) => {
     e.preventDefault()
     if (regPasswordInput.value === regConfirmPasswordInput.value) {
@@ -45,10 +50,12 @@ regForm.onsubmit = (e) => {
     }
 }
 
+// Remove the error message on type
 regPasswordInput.oninput = () => {
     errorMessage.innerHTML = ""
 }
 
+// Remove the error message on type
 regConfirmPasswordInput.oninput = () => {
     errorMessage.innerHTML = ""
 }

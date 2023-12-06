@@ -17,10 +17,10 @@ const completedBtn = document.querySelector(".completed")
 const uncompletedBtn = document.querySelector(".uncompleted")
 const allFilterButtons = document.querySelectorAll(".filterButton")
 
-
+// Get a user id from the local storage
 const userId = JSON.parse(localStorage.getItem("user"))?.id
 
-
+// Redirect to login page if not logged in
 window.onload = () => {
     if (userId) {
         headerUsername.innerHTML = JSON.parse(localStorage.getItem("user"))?.username
@@ -32,17 +32,22 @@ window.onload = () => {
     }, 1)
 }
 
+//  Fetch the data from a data base
 const fetchData = async () => {
-    console.log(userId)
     try {
         const response = await fetch(`https://656b57f0dac3630cf728038c.mockapi.io/todo/users/${userId}/todotasks`)
         const data = await response.json()
+
+        // Client side error handler
         if (response.status >= 400 && response.status <= 499) {
             return "error"
         }
+        // If there is at least a single task
         if (data.length > 0) {
             return data
-        } else if (data.length === 0) {
+        }
+        // If there are no tasks
+        else if (data.length === 0) {
             return false
         }
 
@@ -51,6 +56,7 @@ const fetchData = async () => {
     }
 }
 
+// Filter the tasks
 const getFilteredTasks = async (completed) => {
     try {
         const response = await fetch(`https://656b57f0dac3630cf728038c.mockapi.io/todo/users/${userId}/todotasks?completed=${completed}`)
@@ -61,6 +67,7 @@ const getFilteredTasks = async (completed) => {
     }
 }
 
+// Pop the "No tasks" message
 const popNoTasksMessage = () => {
     const noTasks = document.createElement("p")
     noTasks.setAttribute("class", "noTasksMessage")
@@ -68,6 +75,7 @@ const popNoTasksMessage = () => {
     tasksBlock.append(noTasks)
 }
 
+// Change the appearance of the filter buttons
 const changeActiveBtn = (index) => {
     allFilterButtons.forEach(btn => {
         btn.style.backgroundColor = "#2f2f2f"
@@ -77,6 +85,7 @@ const changeActiveBtn = (index) => {
     allFilterButtons[index].style.color = "#000000"
 }
 
+// Show the completed tasks
 completedBtn.onclick = async () => {
     const tasks = await getFilteredTasks(true)
     tasksBlock.innerHTML = null
@@ -87,6 +96,7 @@ completedBtn.onclick = async () => {
     }
 }
 
+// Show all tasks
 allBtn.onclick = async () => {
     const tasks = await getFilteredTasks("")
     tasksBlock.innerHTML = null
@@ -97,6 +107,7 @@ allBtn.onclick = async () => {
     }
 }
 
+// Show uncompleted tasks
 uncompletedBtn.onclick = async () => {
     const tasks = await getFilteredTasks(false)
     tasksBlock.innerHTML = null
@@ -107,6 +118,7 @@ uncompletedBtn.onclick = async () => {
     }
 }
 
+// Remove task
 const deleteTask = async (id) => {
     try {
         const response = await fetch(`https://656b57f0dac3630cf728038c.mockapi.io/todo/users/${userId}/todotasks/${id}`, {method: "DELETE"})
@@ -117,6 +129,7 @@ const deleteTask = async (id) => {
 
 }
 
+// Check or uncheck a task
 const checkTask = async (id, completed) => {
     const options = {
         method: "PUT",
@@ -135,6 +148,7 @@ const checkTask = async (id, completed) => {
 
 }
 
+// Edit task
 const editTask = async (id, title, desc) => {
     const options = {
         method: "PUT",
@@ -153,6 +167,7 @@ const editTask = async (id, title, desc) => {
 
 }
 
+// Post a new task
 const postTask = async (title, desc) => {
     const options = {
         method: "POST",
@@ -170,12 +185,14 @@ const postTask = async (title, desc) => {
     }
 }
 
-
+// Create new tags for the new tasks
 const createElements = (task) => {
 
+    // If there is a "No tasks" message, remove it
     const noTasks = document.querySelector(".noTasksMessage")
     if (noTasks) noTasks.remove()
 
+    // Creating the tags
     const div = document.createElement("div")
     div.classList.add("taskBlock")
 
@@ -203,6 +220,7 @@ const createElements = (task) => {
     const title = document.createElement("h2")
     title.classList.add("taskTitle")
 
+    // Fancy title appearing animation
     const titleToPrint = task.title.split("")
     const intervalTitle = setInterval(() => {
         title.innerHTML = title.innerHTML + titleToPrint.shift()
@@ -215,6 +233,7 @@ const createElements = (task) => {
     const desc = document.createElement("p")
     desc.classList.add("taskDesc")
 
+    // Fancy description appearing animation
     const descToPrint = task.description.split("")
     const intervalDesc = setInterval(() => {
         desc.innerHTML = desc.innerHTML + descToPrint.shift()
@@ -228,8 +247,10 @@ const createElements = (task) => {
     editBtn.classList.add("taskEdit")
     editBtn.innerHTML = "EDIT"
     editBtn.onclick = async () => {
+        // Showing a modal window
         editModal.classList.remove("hide")
         wrapper.style.filter = "blur(2px)"
+        // Submitting the edited tasks
         editModalForm.onsubmit = async (e) => {
             e.preventDefault()
             const editedTask = await editTask(task.id, editModalTitleInput.value, editModalDescInput.value)
@@ -248,11 +269,13 @@ const createElements = (task) => {
     deleteBtn.onclick = async () => {
         await deleteTask(task.id)
         await div.remove()
+        // Showing the "No tasks" message if there are no tasks
         if (tasksBlock.children.length === 0) {
             popNoTasksMessage()
         }
     }
 
+    // Appending all tags into main block
     taskTitleDesc.append(title, desc)
     taskTitleDescCheckbox.append(checkbox, taskTitleDesc)
     taskButtons.append(editBtn, deleteBtn)
@@ -262,7 +285,7 @@ const createElements = (task) => {
 
 }
 
-
+// Post a new task
 topBlockForm.onsubmit = async (e) => {
     e.preventDefault()
     const title = todoTitleInput.value
@@ -273,6 +296,8 @@ topBlockForm.onsubmit = async (e) => {
     createElements(task)
 
 }
+
+// Create tasks
 const createTasks = async () => {
     const tasks = await fetchData()
     if (typeof tasks === "object") {
@@ -289,6 +314,7 @@ const createTasks = async () => {
     }
 }
 
+// Modal close button
 editModalCloseBtn.onclick = () => {
     wrapper.style.filter = "none"
     editModal.classList.add("hide")
@@ -296,11 +322,12 @@ editModalCloseBtn.onclick = () => {
     editModalDescInput.value = ""
 }
 
+// Logout button
 logoutBtn.onclick = () => {
     localStorage.removeItem("user");
     window.location.replace("../index.html")
 }
 
-
+// Creating the tasks when loaded
 createTasks().then()
 

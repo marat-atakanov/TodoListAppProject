@@ -6,6 +6,7 @@ const headerUsername = document.querySelector(".headerUsername")
 
 const userId = JSON.parse(localStorage.getItem("user"))?.id
 
+// Show the right header for logged user
 window.onload = () => {
     if (userId) {
         headerLoggedIn.classList.remove("hide")
@@ -14,6 +15,7 @@ window.onload = () => {
     }
 }
 
+// Redirect to corresponding pages
 getStartedBtn.onclick = () => {
     if (userId) {
         window.location.href = "pages/todoListPage.html"
@@ -22,6 +24,7 @@ getStartedBtn.onclick = () => {
     }
 }
 
+// Logout the user
 logoutBtn.onclick = () => {
     localStorage.removeItem("user");
     window.location.reload()
