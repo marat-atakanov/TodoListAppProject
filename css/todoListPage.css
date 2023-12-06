@@ -527,3 +527,14 @@
 .hide {
     display: none;
 }
+
+.noTasksMessage {
+    color: #bbbbbb;
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: uppercase;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

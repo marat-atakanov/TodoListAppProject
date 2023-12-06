@@ -281,6 +281,7 @@ const createTasks = async () => {
         })
     } else if (tasks === "error") {
         const error = document.createElement("p")
+        error.setAttribute("class", "noTasksMessage")
         error.innerHTML = "Error..."
         tasksBlock.append(error)
     } else if (!tasks) {
