@@ -10,15 +10,13 @@ const editModalCloseBtn = document.querySelector(".editModalCloseBtn")
 const logoutBtn = document.querySelector(".logoutBtn")
 const wrapper = document.querySelector(".wrapper")
 const headerUsername = document.querySelector(".headerUsername")
-
-
 const allBtn = document.querySelector(".all")
 const completedBtn = document.querySelector(".completed")
 const uncompletedBtn = document.querySelector(".uncompleted")
 const allFilterButtons = document.querySelectorAll(".filterButton")
 
 // Get a user id from the local storage
-const userId = JSON.parse(localStorage.getItem("user"))?.id
+const userId = JSON.parse(localStorage.getItem("user"))
 
 // Redirect to login page if not logged in
 window.onload = () => {
@@ -35,21 +33,21 @@ window.onload = () => {
 //  Fetch the data from a data base
 const fetchData = async () => {
     try {
-        const response = await fetch(`https://656b57f0dac3630cf728038c.mockapi.io/todo/users/${userId}/todotasks`)
+        const response = await fetch(`https://6575814bb2fbb8f6509d2b14.mockapi.io/task-manager/users/${userId}/tasks`)
         const data = await response.json()
 
         // Client side error handler
-        if (response.status >= 400 && response.status <= 499) {
+        if (response.status >= 400 && response.status <= 450) {
             return "error"
         }
         // If there is at least a single task
         if (data.length > 0) {
             return data
         }
-        // If there are no tasks
-        else if (data.length === 0) {
-            return false
-        }
+        // // If there are no tasks
+        // else if (data.length === 0) {
+        //     return false
+        // }
 
     } catch (e) {
         return "error"
