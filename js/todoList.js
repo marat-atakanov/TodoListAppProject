@@ -16,7 +16,7 @@ const uncompletedBtn = document.querySelector(".uncompleted")
 const allFilterButtons = document.querySelectorAll(".filterButton")
 
 // Get a user id from the local storage
-const userId = JSON.parse(localStorage.getItem("user"))
+const userId = JSON.parse(localStorage.getItem("user"))?.id
 
 // Redirect to login page if not logged in
 window.onload = () => {
@@ -33,7 +33,7 @@ window.onload = () => {
 //  Fetch the data from a data base
 const fetchData = async () => {
     try {
-        const response = await fetch(`https://6575814bb2fbb8f6509d2b14.mockapi.io/task-manager/users/${userId}/tasks`)
+        const response = await fetch(`https://656b57f0dac3630cf728038c.mockapi.io/todo/users/${userId}/todotasks`)
         const data = await response.json()
 
         // Client side error handler
